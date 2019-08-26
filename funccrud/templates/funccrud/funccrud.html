@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Funccrud Page. </h1> <br> <br>
+    
+    <!-- 글쓰기 -->
+    <a href="{% url 'newblog' %}"> 글쓰기 </a>
+    
+    <!-- 블로그 글 뿌리기 -->
+    {% for blog in blogs %}
+        <h2> {{blog.title}} </h2>
+        <h5> {{blog.pub_date}} </h5>
+        <p> {{blog.body}} </p>
+        <a href="{% url 'update' blog.id %}"> 수정 </a>
+        <a href="{% url 'delete' blog.id %}"> 삭제 </a>
+        <hr>
+    {% endfor %}
+    
+</body>
+</html>

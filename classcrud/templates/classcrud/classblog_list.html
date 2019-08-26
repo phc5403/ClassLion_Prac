@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Funccrud Page. </h1> <br> <br>
+    
+    <a href="{% url 'new' %}"> 추가 </a>
+    
+    <br>
+    
+    <!-- objedt_list 변수 = 지정한 모델로 만들어진 모든 객체들의 목록이 자동적으로 담긴다. -->
+    {% for blog in object_list %}
+        <h2> {{blog.title}} </h2>
+        <h5> {{blog.created_at}} </h5>
+        <p> {{blog.body}} </p>
+        <a href="{% url 'detail' blog.id %}"> 자세히보기 </a><br>
+        <a href="{% url 'change' blog.id %}"> 수정 </a><br>
+        <a href="{% url 'del' blog.id %}"> 삭제 </a><br>
+        
+        <hr>
+    {% endfor %}
+    
+</body>
+</html>
